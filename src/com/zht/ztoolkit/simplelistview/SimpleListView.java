@@ -14,11 +14,11 @@ public class SimpleListView extends ListActivity{
         };  
         */
 	Person[] data = new Person[]{  
-            new Person("蔡志坤",25,"ffczk86@gmail.com","厦门市"),  
-            new Person("李杰华",25,"aa@bb.com","漳州市"),  
-            new Person("张亮",25,"cc@gmail.com","厦门市"),  
-            new Person("陈旭",25,"ccadd@gmail.com","厦门市"),  
-            new Person("刘玄德",25,"ffczk86@gmail.com","福州市")  
+            new Person(R.drawable.ic_launcher, "蔡志坤",25,"ffczk86@gmail.com","厦门市"),  
+            new Person(R.drawable.ic_launcher, "李杰华",25,"aa@bb.com","漳州市"),  
+            new Person(R.drawable.ic_launcher, "张亮",25,"cc@gmail.com","厦门市"),  
+            new Person(R.drawable.ic_launcher, "陈旭",25,"ccadd@gmail.com","厦门市"),  
+            new Person(R.drawable.ic_launcher, "刘玄德",25,"ffczk86@gmail.com","福州市")  
         };  
     @Override  
     protected void onCreate(Bundle savedInstanceState) {  

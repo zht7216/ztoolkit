@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zht.ztoolkit.R;
@@ -34,6 +35,7 @@ public class PersonAdapter extends ArrayAdapter<Person>{
              convertView = mLayoutInflater.inflate(resourceId, null);  
              holder = new ViewHolder();  
              //查找每个ViewItem中,各个子View,放进holder中  
+             holder.icon = (ImageView) convertView.findViewById(R.id.person_icon);
              holder.name = (TextView) convertView.findViewById(R.id.person_name);  
              holder.age = (TextView) convertView.findViewById(R.id.person_age);  
              holder.email =  (TextView) convertView.findViewById(R.id.person_email);  
@@ -47,6 +49,7 @@ public class PersonAdapter extends ArrayAdapter<Person>{
          //获取当前要显示的数据  
          Person person = getItem(position);  
 
+         holder.icon.setImageResource(person.iconId);
          holder.name.setText(person.name);  
          holder.age.setText(String.valueOf(person.age));  
          holder.email.setText(person.email);  
@@ -59,6 +62,7 @@ public class PersonAdapter extends ArrayAdapter<Person>{
  }  
 
  class ViewHolder {  
+	 ImageView icon;
      TextView name;  
      TextView age;  
      TextView email;  
