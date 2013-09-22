@@ -28,8 +28,14 @@
             android:layout_height="wrap_content"
             android:text="@string/simple_listview"
             >
-            
-        </Button>"
+        </Button>
+        <Button
+            android:id="@+id/async_imageloader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/async_imageloader"
+            >
+        </Button>
 	    <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
