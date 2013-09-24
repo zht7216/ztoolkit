@@ -4,15 +4,16 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.zht.ztoolkit.R;
 
 public class AsyncImageList extends Activity{
-	private GridView mGridView;
+	private ListView mListView;
 	private String [] imageThumbUrls = ImageUrls.imageThumbUrls; 
-	private ImageAdapter mImageAdapter;
+	//private ImageAdapter mImageAdapter;
+	private AsyncImageAdapter mImageAdapter;
 	private FileUtils fileUtils;
 
 	@Override
@@ -20,14 +21,16 @@ public class AsyncImageList extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.async_imagelist);
 		fileUtils = new FileUtils(this);
-		mGridView = (GridView)findViewById(R.id.gridView);
-		mImageAdapter = new ImageAdapter(this, mGridView, imageThumbUrls);
-		mGridView.setAdapter(mImageAdapter);
+		mListView = (ListView)findViewById(R.id.async_listview);
+		//mImageAdapter = new ImageAdapter(this, mListView, imageThumbUrls);
+		mImageAdapter = new AsyncImageAdapter(this, 0, imageThumbUrls, mListView);
+		mListView.setAdapter(mImageAdapter);
 	}
 
 	@Override
 	protected void onDestroy() {
-		mImageAdapter.cancelTask();
+		//mImageAdapter.cancelTask();
+		mImageAdapter.cancelAllTasks();
 		super.onDestroy();
 	}
 
