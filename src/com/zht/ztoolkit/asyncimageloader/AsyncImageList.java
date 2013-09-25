@@ -9,11 +9,18 @@ import android.widget.Toast;
 
 import com.zht.ztoolkit.R;
 
+/**
+ * 参考实现： http://blog.csdn.net/xiaanming/article/details/9825113
+ *           http://blog.csdn.net/guolin_blog/article/details/9526203
+ * @author tao.zt
+ *
+ */
 public class AsyncImageList extends Activity{
 	private ListView mListView;
 	private String [] imageThumbUrls = ImageUrls.imageThumbUrls; 
 	//private ImageAdapter mImageAdapter;
 	private AsyncImageAdapter mImageAdapter;
+	//不需要磁盘缓存的话可以去掉fileUtils相关代码
 	private FileUtils fileUtils;
 
 	@Override

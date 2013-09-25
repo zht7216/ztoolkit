@@ -97,7 +97,8 @@ public class AsyncImageLoader {
 		@Override
 		protected Bitmap doInBackground(String... params) {
 			imageUrl = params[0];
-			final String subUrl = String.valueOf(imageUrl.hashCode());//缺省将URL　hashcode作为文件名, 也可以采用MD5加密
+			//缺省将URL的hashcode作为文件名, 也可以采用MD5加密，如果不打算使用磁盘文件缓存，可直接用url地址
+			final String subUrl = String.valueOf(imageUrl.hashCode());
 			// 在后台开始下载图片
 			//Bitmap bitmap = downloadBitmap(params[0]);
 			Bitmap bitmap = showCacheBitmap(subUrl);
@@ -106,6 +107,8 @@ public class AsyncImageLoader {
 			}else{
 				bitmap = downloadBitmap(params[0]);
 				if (bitmap != null) {
+					/////////////////////////////////////////////////////////////////////////////////////
+					//不需要使用磁盘缓存的话可以去掉此段代码
 					try {
 						//保存在SD卡或者手机目录, 下面的正则表达式是将URL中的标点符号去掉作为文件名
 						//final String subUrl = imageUrl.replaceAll("[^\\w]", "");
@@ -113,6 +116,7 @@ public class AsyncImageLoader {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
+					/////////////////////////////////////////////////////////////////////////////////////
 					// 图片下载完成后缓存到LrcCache中
 					addBitmapToMemoryCache(subUrl, bitmap);
 				}
@@ -166,19 +170,22 @@ public class AsyncImageLoader {
 		 * @return
 		 */
 		public Bitmap showCacheBitmap(String url){
-			Log.d("GKTW87", "\033[32m Enter showCacheBitmap. \033[0m"+url);
+			//Log.d("GKTW87", "\033[32m Enter showCacheBitmap. \033[0m"+url);
 			if(getBitmapFromMemoryCache(url) != null){
-				Log.d("GKTW87", "\033[33m get bitmap from memory cache. \033[0m");
+				//Log.d("GKTW87", "\033[33m get bitmap from memory cache. \033[0m");
 				return getBitmapFromMemoryCache(url);
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		//不需要使用磁盘缓存的话可以去掉此段代码
 			}else if(fileUtils.isFileExists(url) && fileUtils.getFileSize(url) != 0){
 				//从SD卡获取手机里面获取Bitmap
-				Log.d("GKTW87", "\033[32m Enter fileUtils.getBitmap. \033[0m");
+				//Log.d("GKTW87", "\033[32m Enter fileUtils.getBitmap. \033[0m");
 				Bitmap bitmap = fileUtils.getBitmap(url);
 
 				//将Bitmap 加入内存缓存
 				addBitmapToMemoryCache(url, bitmap);
 				return bitmap;
 			}
+		////////////////////////////////////////////////////////////////////////////////////////////////////
 
 			return null;
 		}
