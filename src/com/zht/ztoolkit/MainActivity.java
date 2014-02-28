@@ -1,20 +1,30 @@
 package com.zht.ztoolkit;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
 import com.zht.ztoolkit.asyncimageloader.AsyncImageList;
 import com.zht.ztoolkit.simplelistview.SimpleListView;
+import com.zht.ztoolkit.jsonparser.JsonParserActivity;
+import com.zht.ztoolkit.fragment.FragmentPagerActivity;
+import com.zht.ztoolkit.fragment.FragmentTouchActivity;
 
 public class MainActivity extends Activity {
 
 	Button simpleListView;
 	Button asyncImageLoader;
+	Button sendSMS;
+	Button parseJson;
+	Button fragmentPager;
+	Button fragmentTouch;
 	Context mContext;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +32,10 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		simpleListView = (Button)findViewById(R.id.simple_listview);
 		asyncImageLoader = (Button)findViewById(R.id.async_imageloader);
+		sendSMS = (Button)findViewById(R.id.send_sms);
+		parseJson = (Button)findViewById(R.id.parse_json);
+		fragmentPager = (Button)findViewById(R.id.fragment_pager);
+		fragmentTouch = (Button)findViewById(R.id.fragment_touch);
 		init();
 	}
 
@@ -54,6 +68,59 @@ public class MainActivity extends Activity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setClass(mContext, AsyncImageList.class);
 				getApplicationContext().startActivity(intent);
+			}
+		});
+		sendSMS.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				SmsManager sms=SmsManager.getDefault();
+
+                //锟斤拷锟斤拷锟斤拷荽锟斤拷锟�0锟街ｏ拷锟斤拷锟斤拷为锟斤拷锟斤拷
+                List<String> texts=sms.divideMessage("Test, haha");
+
+                //锟斤拷锟斤拷锟斤拷锟酵讹拷锟斤拷
+                for(String text:texts)
+                {
+                    sms.sendTextMessage("13488759668", null, text, null, null);
+                }                
+			}
+		});
+		parseJson.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setClass(mContext, JsonParserActivity.class);
+				getApplicationContext().startActivity(intent);
+			}
+		});
+		
+		fragmentPager.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				//Intent intent = new Intent(MainActivity.this, com.zht.ztoolkit.fragment.FragmentPagerActivity.class);
+				Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setClass(mContext, FragmentPagerActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		fragmentTouch.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+				intent.setClass(mContext, FragmentTouchActivity.class);
+				startActivity(intent);
+				
 			}
 		});
 	}

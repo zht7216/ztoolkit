@@ -36,6 +36,26 @@
             android:text="@string/async_imageloader"
             >
         </Button>
+        <Button 
+            android:id="@+id/send_sms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/send_sms"/>
+        <Button 
+            android:id="@+id/parse_json"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/json_parser"/>
+        <Button 
+            android:id="@+id/fragment_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_pager"/>
+        <Button 
+            android:id="@+id/fragment_touch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_touch"/>
 	    <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"

@@ -6,6 +6,14 @@
     <string name="hello_world">Hello world!</string>
     <string name="simple_listview">simple listview</string>
     <string name="async_imageloader">async imageloader</string>
+    <string name="send_sms">Send SMS</string>
     <string name="no_data">No Data</string>
-
+    <string name="json_parser">Json Parser</string>
+    
+    <string name="fragment_pager">Fragment Pager</string>
+    <string name="fragment_touch">Fragment Touch</string>
+    <string name="tab1">TAB1</string>
+    <string name="tab2">TAB2</string>
+    <string name="tab3">TAB3</string>
+    <string name="tab4">TAB4</string>
 </resources>
