@@ -16,6 +16,7 @@ import com.zht.ztoolkit.simplelistview.SimpleListView;
 import com.zht.ztoolkit.jsonparser.JsonParserActivity;
 import com.zht.ztoolkit.fragment.FragmentPagerActivity;
 import com.zht.ztoolkit.fragment.FragmentTouchActivity;
+import com.zht.ztoolkit.listview.arrayadapter.ArrayAdapterActivity;
 
 public class MainActivity extends Activity {
 
@@ -25,6 +26,7 @@ public class MainActivity extends Activity {
 	Button parseJson;
 	Button fragmentPager;
 	Button fragmentTouch;
+	Button arrayAdapter;
 	Context mContext;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class MainActivity extends Activity {
 		parseJson = (Button)findViewById(R.id.parse_json);
 		fragmentPager = (Button)findViewById(R.id.fragment_pager);
 		fragmentTouch = (Button)findViewById(R.id.fragment_touch);
+		arrayAdapter = (Button)findViewById(R.id.array_adapter);
 		init();
 	}
 
@@ -77,10 +80,10 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				SmsManager sms=SmsManager.getDefault();
 
-                //锟斤拷锟斤拷锟斤拷荽锟斤拷锟�0锟街ｏ拷锟斤拷锟斤拷为锟斤拷锟斤拷
+                //閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷疯嵔閿熸枻鎷烽敓锟�閿熻锝忔嫹閿熸枻鎷烽敓鏂ゆ嫹涓洪敓鏂ゆ嫹閿熸枻鎷�
                 List<String> texts=sms.divideMessage("Test, haha");
 
-                //锟斤拷锟斤拷锟斤拷锟酵讹拷锟斤拷
+                //閿熸枻鎷烽敓鏂ゆ嫹閿熸枻鎷烽敓閰佃鎷烽敓鏂ゆ嫹
                 for(String text:texts)
                 {
                     sms.sendTextMessage("13488759668", null, text, null, null);
@@ -121,6 +124,17 @@ public class MainActivity extends Activity {
 				intent.setClass(mContext, FragmentTouchActivity.class);
 				startActivity(intent);
 				
+			}
+		});
+		
+		arrayAdapter.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent();
+				intent.setClass(mContext, ArrayAdapterActivity.class);
+				startActivity(intent);
 			}
 		});
 	}

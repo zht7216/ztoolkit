@@ -62,6 +62,10 @@
             android:name="com.zht.ztoolkit.fragment.FragmentTouchActivity"
             android:label="@string/fragment_touch">
         </activity>
+        <activity
+            android:name="com.zht.ztoolkit.listview.arrayadapter.ArrayAdapterActivity"
+            android:label="@string/array_adapter">
+        </activity>
     </application>
 
 </manifest>
